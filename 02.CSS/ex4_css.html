@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습4 줄무늬 모양 만들기</title>
+    <style>
+      .stripes > * {
+        background-color: navy;
+        color: white;
+      }
+
+      .stripes > *:nth-child(2) {
+        background-color: yellow;
+        color: black;
+      }
+
+      .stripes > *:nth-child(6) {
+        background-color: yellow;
+        color: black;
+      }
+
+      .stripes > *:nth-child(10) {
+        background-color: yellow;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stripes">
+      <div>navy</div>
+      <div>yellow</div>
+      <div>navy</div>
+      <div>navy</div>
+      <div>navy</div>
+      <div>yellow</div>
+      <div>navy</div>
+      <div>navy</div>
+      <div>navy</div>
+      <div>yellow</div>
+      <div>navy</div>
+    </div>
+  </body>
+</html>
