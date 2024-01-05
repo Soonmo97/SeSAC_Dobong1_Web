@@ -1,0 +1,36 @@
+.container {
+  width: 1600px;
+  height: 1000px;
+  background-color: lightgray;
+  position: relative;
+}
+
+.container img {
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  cursor: pointer;
+  top: 300px;
+  transform: rotate(45deg);
+  transition-duration: 1s;
+}
+
+.container img:hover {
+  z-index: 3;
+  transform: scale(0.9) rotate(0);
+  transition-duration: 1s;
+}
+
+.container [alt='beach1'] {
+  z-index: 2;
+  left: 300px;
+}
+
+.container [alt='beach2'] {
+  left: 500px;
+  z-index: 1;
+}
+
+.container [alt='beach3'] {
+  left: 700px;
+}
