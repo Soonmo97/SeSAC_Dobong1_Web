@@ -1,0 +1,40 @@
+.back {
+  width: 860px;
+  height: 870px;
+  background: linear-gradient(45deg, yellow, red, rgb(233, 54, 246));
+  border-radius: 430px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-back-white {
+  width: 830px;
+  height: 830px;
+  border-radius: 415px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-back {
+  width: 800px;
+  height: 800px;
+  border-radius: 400px;
+  background-image: url(./img/profile_background.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.profile {
+  width: 500px;
+  height: 500px;
+  border-radius: 250px;
+  background-image: url(./img/profile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}

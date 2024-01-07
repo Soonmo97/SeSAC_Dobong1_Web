@@ -1,23 +1,23 @@
 .container {
-  width: 1600px;
+  width: 1400px;
   height: 1000px;
   background-color: lightgray;
   position: relative;
 }
 
 .container img {
-  width: 500px;
+  width: 420px;
   height: 300px;
   position: absolute;
   cursor: pointer;
   top: 300px;
-  transform: rotate(45deg);
+  transform: skewY(30deg);
   transition-duration: 1s;
 }
 
 .container img:hover {
   z-index: 3;
-  transform: scale(0.9) rotate(0);
+  transform: scale(0.9) skewY(0deg);
   transition-duration: 1s;
 }
 
