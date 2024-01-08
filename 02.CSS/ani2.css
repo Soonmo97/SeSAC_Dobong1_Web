@@ -1,0 +1,14 @@
+p {
+  animation-name: one;
+  animation-duration: 3s;
+}
+
+@keyframes one {
+  from {
+    transform: translateX(100vw);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}

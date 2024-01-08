@@ -54,3 +54,65 @@
   /* backface-visibility: hidden; */
   transition-duration: 10s;
 }
+
+.box {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  background-color: green;
+}
+
+.box1:hover {
+  background-color: brown;
+  width: 120px;
+  height: 120px;
+  transition-duration: 1s;
+  /* transition-delay: 1s; */
+  /* transition-property: height; */
+  transition-timing-function: linear;
+}
+
+.box2:hover {
+  /* transition 단축속성 */
+  /* transition: property duration(필수) function delay  */
+  background-color: aqua;
+  transform: translateX(100px) scaleX(2);
+
+  /* transition: transform 0.5s linear 2s; */
+  /* transition: 2s 0.5s; */
+  transition: 2s;
+}
+
+.box3:hover {
+  transition: 0.6s;
+  /* opacity: 0; */
+  /* visibility: hidden; */
+  display: none;
+}
+
+.cube {
+  width: 80px;
+  height: 80px;
+  background-color: skyblue;
+  border: 1px solid black;
+  transition: 1s;
+}
+
+.cube1:hover {
+  transform: translateX(40px) scaleX(2);
+}
+
+.cube2:hover {
+  transform: translateX(40px) skewX(-45deg);
+}
+
+.cube3:hover {
+  transform: translateX(300px) rotate(180deg);
+  border-radius: 40px;
+  background-color: red;
+}
+
+.cube4:hover {
+  transform: rotateY(360deg) scale(1.5);
+  background-color: yellow;
+}
