@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 실습</title>
+  </head>
+  <body>
+    <div>민트 초코는 <span>맛있다 >_<</span></div>
+
+    <script>
+      // let span = document.querySelector('span');
+      let span = document.getElementsByTagName('span')[0];
+      // console.log(span);
+      span.innerText = '맛없다 ㅡㅡ;;';
+      span.style = 'color: red; font-weight: bold;';
+      // style이라는 하나의 속성에 color, font-weight 존재 등등
+      // span.style.color = 'red';
+      // span.style.fontWeight = 'bold'
+    </script>
+  </body>
+</html>
