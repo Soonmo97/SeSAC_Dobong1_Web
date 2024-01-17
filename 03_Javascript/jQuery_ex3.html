@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      td {
+        width: 100px;
+        height: 100px;
+      }
+
+      p {
+        background-color: aliceblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div>날짜: <input type="text" id="day" /></div>
+    <div>내용: <input type="text" id="content" /></div>
+    <button>작성</button>
+
+    <h1 style="color: green; text-align: center">2022년 7월</h1>
+    <table style="margin: 0 auto; text-align: center">
+      <tr>
+        <td style="color: red">日</td>
+        <td>月</td>
+        <td>火</td>
+        <td>水</td>
+        <td>木</td>
+        <td>金</td>
+        <td style="color: blue">土</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>1</td>
+        <td style="color: blue">2</td>
+      </tr>
+      <tr>
+        <td style="color: red">3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td style="color: blue">9</td>
+      </tr>
+      <tr>
+        <td style="color: red">10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+        <td>14</td>
+        <td>15</td>
+        <td style="color: blue">16</td>
+      </tr>
+
+      <tr>
+        <td style="color: red">17</td>
+        <td>18</td>
+        <td>19</td>
+        <td>20</td>
+        <td>21</td>
+        <td>22</td>
+        <td style="color: blue">23</td>
+      </tr>
+      <tr>
+        <td style="color: red">24</td>
+        <td>25</td>
+        <td>26</td>
+        <td>27</td>
+        <td>28</td>
+        <td>29</td>
+        <td style="color: blue">30</td>
+      </tr>
+      <tr>
+        <td style="color: red">31</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <!-- <div id="test">
+      test
+      <span>child</span>
+    </div> -->
+
+    <script>
+      let target;
+      $('td').click(function (e) {
+        $('#day').val(e.target.textContent);
+        target = e.target;
+        // console.log(e.target);
+      });
+
+      $('button').click(function () {
+        let content = $('#content').val();
+        console.log(target);
+        $(target).append(`<p>${content}</p>`);
+        $('#content').val('');
+      });
+
+      // $('#test').click(function (e) {
+      //   console.log(e.target);
+      //   console.log(e.currentTarget);
+      //   console.log(this);
+      // });
+    </script>
+  </body>
+</html>
