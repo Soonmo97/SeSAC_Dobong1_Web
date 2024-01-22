@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Ex</title>
+    <!-- Sweetalert CDN -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- chart cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- css cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- js cdn -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function al() {
+        Swal.fire({
+          title: 'The Internet?',
+          text: 'That thing is still around?',
+          icon: 'question',
+        });
+      }
+    </script>
+    <style>
+      .container {
+        display: flex;
+        width: 100vw;
+      }
+
+      .container .card {
+        margin: 0 2rem;
+      }
+
+      .container .card img {
+        height: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar bg-warning bg-opacity-25">
+        <div class="container-fluid">
+          <a class="navbar-brand"
+            ><img src="./img/logo.jpeg" alt="logo" style="width: 50px" />
+          </a>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="container">
+        <div class="card mt-5 mx-10" style="width: 18rem">
+          <img src="./img/apple.jpeg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center" onclick="al()">Apple</p>
+          </div>
+        </div>
+        <div class="card mt-5" style="width: 18rem">
+          <img src="./img/banana.jpeg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">Banana</p>
+          </div>
+        </div>
+
+        <div class="card mt-5" style="width: 18rem">
+          <img src="./img/blueberry.jpeg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">Blueberry</p>
+          </div>
+        </div>
+        <div class="card mt-5" style="width: 18rem">
+          <img src="./img/watermelone.jpeg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">WaterMelone</p>
+          </div>
+        </div>
+        <div class="card mt-5" style="width: 18rem">
+          <img src="./img/grape.jpeg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">Grape</p>
+          </div>
+        </div>
+        <div class="card mt-5" style="width: 18rem">
+          <img src="./img/orange.jpeg" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text text-center">Orange</p>
+          </div>
+        </div>
+      </section>
+      <div class="chart" style="margin-top: 20px">
+        <canvas id="myChart"></canvas>
+      </div>
+    </main>
+    <footer></footer>
+
+    <script>
+      const ctx = document.getElementById('myChart');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: [
+            'Apple',
+            'Banana',
+            'Blueberry',
+            'Watermelone',
+            'Grape',
+            'Orange',
+          ],
+          datasets: [
+            {
+              label: 'sell of fruit',
+              data: [1222, 1920, 850, 500, 1100, 900],
+              backgroundColor: [
+                //색상
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
