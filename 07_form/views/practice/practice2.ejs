@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습문제2 POST</title>
+  </head>
+  <body>
+    <h2>실습문제2</h2>
+    <form action="/practice" method="post">
+      <label>이름 <input type="text" name="name" /></label>
+      <fieldset>
+        <legend>성별</legend>
+        <label for="male">
+          <input type="radio" name="gender" id="male" value="남" />남자
+        </label>
+
+        <label for="female">
+          <input type="radio" name="gender" id="female" value="여" />여자
+        </label>
+      </fieldset>
+      <br />
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="year" id="year">
+          <%for(let i=1985; i<=2003; i++) {%>
+          <option value="<%=i%>"><%=i%></option>
+          <%}%></select
+        ><span>년</span>
+        <select name="month" id="month">
+          <%for(let i=1; i<=12; i++) {%>
+          <option value="<%=i%>"><%=i%></option>
+          <%}%></select
+        ><span>월</span>
+        <select name="date" id="date">
+          <%for(let i=1; i<=31; i++) {%>
+          <option value="<%=i%>"><%=i%></option>
+          <%}%></select
+        ><span>일</span>
+      </fieldset>
+
+      <fieldset>
+        <legend>관심사</legend>
+        <label><input type="checkbox" name="like" value="여행" />여행</label>
+        <label><input type="checkbox" name="like" value="패션" />패션</label>
+        <label><input type="checkbox" name="like" value="음식" />음식</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>선택 사항</legend>
+        <label>
+          <span>좋아하는 색상</span><input type="color" name="color" />
+        </label>
+        <br />
+        <label
+          ><span>좋아하는 숫자</span><input type="number" name="number"
+        /></label>
+        <br />
+        <label>
+          다짐 한마디
+          <textarea name="comment" cols="30" rows="10"></textarea>
+        </label>
+      </fieldset>
+      <button>회원가입</button>
+    </form>
+
+    <script>
+      //   const year = document.querySelector('[name="year"]');
+      //   for (let i = 1940; i < 2024; i++) {
+      //     let yearOption = document.createElement('option');
+      //     yearOption.setAttribute('value', i);
+      //     yearOption.innerText = i;
+      //     if (i === 2010) yearOption.setAttribute('selected', true);
+      //     year.append(yearOption);
+      //   }
+
+      //   const month = document.querySelector('[name="month"]');
+      //   for (let i = 1; i <= 12; i++) {
+      //     let monthOption = document.createElement('option');
+      //     monthOption.setAttribute('value', i);
+      //     monthOption.innerText = i;
+      //     if (i === 1) monthOption.setAttribute('selected', true);
+      //     month.append(monthOption);
+      //   }
+      //
+    </script>
+  </body>
+</html>
