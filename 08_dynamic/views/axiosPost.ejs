@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- axios cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form name="login">
+      아이디: <input type="text" name="id" /> <br /><br />
+      비밀번호: <input type="password" name="pw" />
+      <br />
+      <button type="button" onclick="loginCheck()">로그인</button>
+    </form>
+    <p></p>
+
+    <script>
+      function loginCheck() {
+        const form = document.forms['login'];
+        const p = document.querySelector('p');
+        const data = {
+          id: form.id.value,
+          pw: form.pw.value,
+        };
+
+        axios({
+          method: 'post',
+          url: '/axiosPost',
+          data: data,
+        })
+          .then(() => {
+            console.log('로그인 성공');
+            p.innerText = '로그인 성공';
+            p.style.color = 'blue';
+          })
+          .catch(() => {
+            console.log('로그인 실패');
+            p.innerText =
+              '로그인 실패, 아이디 또는 비밀번호가 틀렸습니다. 확인해주세요.';
+            p.style.color = 'red';
+          });
+      }
+    </script>
+  </body>
+</html>
