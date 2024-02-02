@@ -75,10 +75,15 @@ app.post('/axiosPost', (req, res) => {
   const id = 'soon';
   const pw = '1234';
   console.log(req.body);
-  if (req.body.id === id && req.body.pw === pw) {
-    res.send(req.body);
+  const { id: reqId, pw: reqPw } = req.body;
+  if (reqId === id && reqPw === pw) {
+    res.send({
+      userInfo: req.body,
+      // ...req.body
+      isSuccess: true,
+    });
   } else {
-    res.send(213123);
+    res.send({ isSuccess: false });
   }
 });
 

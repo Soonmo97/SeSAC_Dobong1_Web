@@ -49,16 +49,17 @@
         <label><input type="checkbox" name="like" value="음식" />음식</label>
       </fieldset>
       <button type="button" onclick="axiosGet()">회원가입</button>
+      <p class="result"></p>
     </form>
 
     <script>
       function axiosGet() {
         const form = document.forms['register'];
+        const result = document.querySelector('.result');
         const like = [];
-        const check = document.querySelectorAll('[type="checkbox"]');
-        for (let i = 0; i < check.length; i++) {
-          if (check[i].checked) {
-            like[i] = check[i].value;
+        for (let i = 0; i < form.like.length; i++) {
+          if (form.like[i].checked) {
+            like[i] = form.like[i].value;
           }
         }
 
@@ -75,6 +76,12 @@
           params: data,
         }).then((res) => {
           console.log(res.data);
+
+          const { name, gender, birth, like } = res.data;
+          const [year, month, date] = birth;
+
+          result.innerText = `${name}님 환영합니다. 생일은 ${year}/${month}/${date}
+                              취미는 ${like} 입니다.`;
         });
       }
     </script>

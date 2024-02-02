@@ -1,0 +1,19 @@
+.name {
+  color: rgb(68, 148, 252);
+}
+
+.profile {
+  border: 2px solid rgb(255, 229, 233);
+}
+
+.user {
+  margin-right: 100px;
+}
+
+.user {
+  width: 200px;
+  margin-bottom: 20px;
+
+  display: flex;
+  justify-content: space-between;
+}
