@@ -173,56 +173,53 @@ SELECT name FROM user WHERE name LIKE '이%' AND age = 22;
 -- DISTINCT (중복 튜플 제거)
 SELECT DISTINCT age FROM user;
 
--- 실습 1 ~ 5     1~3 명령어, 테이블 구조    4 명령어, 데이터  5 명령어만 제출
--- 실습 1 
-use dobong;
-CREATE TABLE member (
-  id VARCHAR(20) NOT NULL PRIMARY KEY,
-  name VARCHAR(5) NOT NULL,
-  age INT,
-  gender VARCHAR(2) NOT NULL,
-  email VARCHAR(50),
-  promotion VARCHAR(2) DEFAULT 'x'
+-- GROUP BY & HAVING
+SHOW DATABASES;
+USE sesac;
+SHOW TABLES;
+DROP TABLE IF EXISTS user; -- IF EXISTS (user table이 존재할 경우 삭제)
+CREATE Table user(
+  user_id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(10) NOT NULL,
+  specialize ENUM('축구', '야구', '클라이밍', '배드민턴') NOT NULL,
+  gender ENUM('남', '여') NOT NUll,
+  career_year INT NOT NULL
 );
 
-DESC member
+DESC user;
 
--- 실습 2
-ALTER Table member ADD interest VARCHAR(100);
-
-ALTER Table member DROP age;
-DESC member
-
--- 실습 3
-CREATE Table user (
-  id VARCHAR(10) NOT NULL PRIMARY KEY,
-  pw VARCHAR(20) NOT NULL,
-  name VARCHAR(5) NOT NULL,
-  gender ENUM('F', 'M', '') DEFAULT '', -- ENUM('', '', ..) 데이터 셋 제시 
-  birthday DATE NOT NULL,
-  age INT(3) NOT NULL DEFAULT 0
-);
-
-DESC USER
-
--- 실습 4
-INSERT INTO user VALUES ('hong1234', '8o4bkg', '홍길동', 'M', '1990-01-31', 33);
-INSERT INTO user VALUES ('sexysung', '87awjkdf', '성춘향', 'F', '1992-03-31', 31);
-INSERT INTO user VALUES ('power', 'qxur8sda', '변사또', 'M', '1970-05-02', 53);
-INSERT INTO user VALUES ('hanjo', 'jk48fn4', '한조', 'M', '1984-10-18', 39);
-INSERT INTO user VALUES ('widowmaker', '38ewifh3', '위도우', 'F', '1976-06-27', 47);
-INSERT INTO user VALUES ('dvadva', 'k3f3ah', '송하나', 'F', '2001-06-03', 22);
-INSERT INTO user VALUES ('jungkrat', '4ifha7f', '정크랫', 'M', '1999-11-11', 24);
-
+INSERT INTO user VALUES(NULL, '김판곤', '축구', '남', 40);
+INSERT INTO user VALUES(NULL, '손흥민', '축구', '남',15);
+INSERT INTO user VALUES(NULL, '김자인', '클라이밍', '여',10);
+INSERT INTO user VALUES(NULL, '김동우', '축구', '남',1);
+INSERT INTO user VALUES(NULL, '전유진', '배드민턴', '여',2);
+INSERT INTO user VALUES(NULL, '이대호', '야구', '남',24);
+INSERT INTO user VALUES(NULL, '안세영', '배드민턴', '여',11);
+INSERT INTO user VALUES(NULL, '배서연', '클라이밍', '여',3);
+INSERT INTO user VALUES(NULL, '황희찬', '축구', '남',9);
+INSERT INTO user VALUES(NULL, '지소연', '축구', '여',17);
+INSERT INTO user VALUES(NULL, '이정후', '야구', '남',11);
+INSERT INTO user VALUES(NULL, '김광현', '야구', '남',21);
 SELECT * FROM user;
 
--- 실습 5
-SELECT * FROM user ORDER BY birthday; 
-SELECT * FROM user WHERE gender = 'M' ORDER BY name DESC; 
-SELECT id, name FROM user WHERE birthday LIKE '1990%';
-SELECT * FROM user WHERE birthday LIKE '%06%' ORDER BY birthday;
-SELECT * FROM user WHERE gender = 'M' AND birthday LIKE '1970%';
-SELECT * FROM user ORDER BY age DESC LIMIT 3;
-SELECT * FROM user WHERE age BETWEEN 25 AND 50;
-UPDATE user SET pw = '12345678' WHERE id = 'hong1234';
-DELETE FROM user WHERE id = 'jungkrat';
+-- 집계 함수
+SELECT COUNT(specialize) FROM user WHERE specialize='축구';
+-- WHERE 조건에 만족하는 튜플의 개수를 세줌
+
+SELECT SUM(career_year) FROM user;
+SELECT SUM(career_year) FROM user WHERE specialize = '축구';
+SELECT AVG(career_year) FROM user WHERE specialize = '축구';
+SELECT MIN(career_year) FROM user WHERE specialize = '축구';
+SELECT MAX(career_year) FROM user WHERE specialize = '축구';
+
+-- GROUP BY (같은 그룹끼리 묶여서 확인 가능)
+SELECT specialize FROM user GROUP BY specialize;
+SELECT specialize, COUNT(*) FROM user GROUP BY specialize;
+SELECT specialize, COUNT(*) FROM user WHERE gender='여' 
+GROUP BY specialize HAVING count(specialize)>=2;
+-- 각 분야의 여성들 숫자 세기
+-- having: 여성 중 2명 이상의 분야만 출력
+
+/* 
+select > from > where > group by > having > order by > limit
+*/
