@@ -20,23 +20,28 @@ exports.user2 = (req, res) => {
   // console.log(User.user);
   const { id: reqId, pw: reqPw } = req.body;
   const userList = User.user.split('\n'); // userInfo = ['abcd//1234//사과사과', '...', '...']
-  console.log(userList);
+  // console.log(userList);
+  const userInfo = [];
   for (let user of userList) {
-    console.log(user.split('//')[0]);
-    console.log(user.split('//')[1]);
-    if (reqId === user.split('//')[0] && reqPw === user.split('//')[1]) {
-      return res.send({
-        userInfo: {
-          id: user.split('//')[0],
-          pw: user.split('//')[1],
-          name: user.split('//')[2],
-        },
-        isSuccess: true,
-      });
-    } else {
-      return res.send({ isSuccess: false });
+    userInfo.push({
+      id: user.split('//')[0],
+      pw: user.split('//')[1],
+      name: user.split('//')[2],
+    });
+  }
+  let result = false;
+  let resultUser = {};
+  for (let i = 0; i < userInfo.length; i++) {
+    if (reqId === userInfo[i].id && reqPw === userInfo[i].pw) {
+      result = true;
+      resultUser = userInfo[i];
     }
   }
+  console.log(resultUser);
+
+  if (result) res.send({ userInfo: resultUser, isSuccess: true });
+  else res.send({ isSuccess: false });
+  // console.log(userInfo);
 };
 // app.post('/axiosPost', (req, res) => {
 //   // const id = 'soon';
