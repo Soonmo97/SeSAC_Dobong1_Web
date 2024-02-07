@@ -14,7 +14,7 @@
       비밀번호: <input type="password" name="pw" required />
       <br />
       <button type="button" onclick="loginCheck()">로그인</button>
-      <button type="button" onclick="loginCheck()">로그인</button>
+      <button type="button" onclick="loginCheck2()">로그인</button>
     </form>
     <p></p>
 
@@ -43,6 +43,41 @@
             // 성공
             if (res.data.isSuccess) {
               p.innerText = '로그인 성공';
+              p.style.color = 'blue';
+            } else {
+              // 실패
+              p.innerText = '아이디 또는 패스워드 오류😢';
+              p.style.color = 'red';
+            }
+          })
+          .catch((err) => {
+            err;
+          });
+      }
+      function loginCheck2() {
+        const form = document.forms['login'];
+        const p = document.querySelector('p');
+
+        if (!form.id.checkValidity() || !form.pw.checkValidity()) {
+          p.textContent = '아이디와 비밀번호는 필수값입니다.';
+          return;
+        }
+
+        const data = {
+          id: form.id.value,
+          pw: form.pw.value,
+        };
+
+        axios({
+          method: 'post',
+          url: '/user/check',
+          data: data,
+        })
+          .then((res) => {
+            console.log(res);
+            // 성공
+            if (res.data.isSuccess) {
+              p.innerText = `${res.data.userInfo.id}님 환영합니다.`;
               p.style.color = 'blue';
             } else {
               // 실패
