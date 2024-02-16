@@ -11,9 +11,15 @@ SHOW tables;
 DROP TABLE IF EXISTS user;
 
 -- TODO: user 데이터베이스 생성
+CREATE TABLE user (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  userid VARCHAR(20) NOT NULL,
+  name VARCHAR(10) NOT NULL,
+  pw VARCHAR(20) NOT NULL
+);
 
 -- user 데이블 데이터 추가
-INSERT INTO user (userid, name, pw) VALUES ('allie', 'allie', '1234');
+INSERT INTO user (id, userid, name, pw) VALUES (1, 'allie', 'allie', '1234');
 INSERT INTO user (userid, name, pw) VALUES ('test', 'test', '1234');
 INSERT INTO user (userid, name, pw) VALUES ('apple', 'apple', '1234');
 INSERT INTO user (userid, name, pw) VALUES ('hello', 'hello', '1234');
@@ -23,3 +29,4 @@ DESC user;
 
 -- user 테이블 데이터 조회
 SELECT * FROM user;
+

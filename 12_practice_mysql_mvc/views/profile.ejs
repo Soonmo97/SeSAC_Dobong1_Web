@@ -10,13 +10,31 @@
     <!-- TODO: 각 input의 value 값을 로그인 한 사람의 정보로 채우기 -->
     <form name="form_profile">
       <label for="userid">ID</label>
-      <input type="hidden" id="id" value="" />
+      <input type="hidden" id="id" value="<%=data.id%>" />
       <!-- readonly: userid는 수정 불가능 (조건임) -->
-      <input id="userid" type="text" name="userid" value="" readonly /><br />
+      <input
+        id="userid"
+        type="text"
+        name="userid"
+        value="<%=data.userid%>"
+        readonly
+      /><br />
       <label for="password">Password</label>
-      <input id="password" type="password" name="pw" value="" required /><br />
+      <input
+        id="password"
+        type="password"
+        name="pw"
+        value="<%=data.pw%>"
+        required
+      /><br />
       <label for="name">Name</label>
-      <input id="name" type="text" name="name" value="" required /><br />
+      <input
+        id="name"
+        type="text"
+        name="name"
+        value="<%=data.name%>"
+        required
+      /><br />
       <button type="button" onclick="profileEdit();">Edit</button>
       <button type="button" onclick="profileDelete();">Delete</button>
     </form>
@@ -24,11 +42,45 @@
     <script>
       // TODO: [Login] 버튼 클릭시 서버에 회원 정보 수정 요청하기
       // POST /user/profile/edit
-      function profileEdit() {}
+      function profileEdit() {
+        const form = document.forms['form_profile'];
+
+        if (!form.checkValidity()) {
+          return form.reportValidty();
+        }
+
+        axios({
+          url: '/user/profile/edit',
+          method: 'POST',
+          data: {
+            id: form.id.value, // where 조건으로 사용
+            pw: form.pw.value, // 실제 변경할 데이터
+            name: form.name.value, // 실제 변경할 데이터
+          },
+        }).then(() => {
+          alert('회원정보 수정 완료');
+          form.reset();
+        });
+      }
 
       // TODO: [Login] 버튼 클릭시 서버에 회원 정보 삭제 요청하기
       // POST /user/profile/delete
-      function profileDelete() {}
+      function profileDelete() {
+        const form = document.forms['form_profile'];
+
+        axios({
+          url: '/user/profile/delete',
+          method: 'POST',
+          data: {
+            id: form.id.value,
+          },
+        }).then(() => {
+          alert('회원 삭제 완료');
+
+          // 메인 페이지로 이동
+          document.location.href = '/user';
+        });
+      }
     </script>
   </body>
 </html>
