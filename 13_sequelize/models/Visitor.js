@@ -1,6 +1,6 @@
 const Visitor = (Sequelize, DataTypes) => {
-  // Sequelize 는 model/index.js 의 sequelize
-  // Datatypes 는 model/index.js 의 Sequelize
+  // Sequelize 는 models/index.js 의 sequelize
+  // Datatypes 는 models/index.js 의 Sequelize
 
   // const model = Sequelize.define(params1, params2, params3);
 

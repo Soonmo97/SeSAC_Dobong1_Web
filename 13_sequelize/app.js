@@ -16,6 +16,10 @@ const indexRouter = require('./routes');
 app.use('/', indexRouter);
 // const indexRouter = require('./routes/index')
 
+// 회원 관리 라우터
+const userRouter = require('./routes/user');
+app.use('/user', userRouter);
+
 // 404 error
 app.get('*', (req, res) => {
   res.render('404');
