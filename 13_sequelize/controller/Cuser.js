@@ -23,6 +23,7 @@ exports.post_signup = (req, res) => {
     pw: req.body.pw,
   }).then((result) => {
     console.log('create >> ', result);
+    console.log(result.id);
     res.end();
   });
 };
@@ -43,12 +44,16 @@ exports.post_signin = (req, res) => {
   //     res.send(false);
   //   }
   // });
+  // findOne은 LIMIT 없어도 ok
   models.User.findOne({
     where: {
       userid: req.body.userid,
       pw: req.body.pw,
     },
   }).then((result) => {
+    // result: findOne을 이용해서 찾은 결과를 반환 or
+    // 데이터를 못찾았다면 null 반환
+    console.log('로그인 요청', result);
     if (result) {
       res.send(true);
     } else {
@@ -94,8 +99,12 @@ exports.edit_profile = (req, res) => {
         id: req.body.id,
       },
     }
-  ).then(() => {
-    res.send();
+  ).then((result) => {
+    console.log('회원 정보 수정', result);
+    // [1] or [0]
+    // 수정 성공, 수정 실패
+    // where 조건에 해당하는 레코드를 못찾았을 때 실패!
+    res.end();
   });
 };
 
@@ -111,7 +120,10 @@ exports.delete_profile = (req, res) => {
     where: {
       id: req.body.id,
     },
-  }).then(() => {
+  }).then((result) => {
+    console.log('회원 정보 삭제', result);
+    // 1 : 삭제 성공
+    // 0 : 삭제 실패
     res.end();
   });
 };

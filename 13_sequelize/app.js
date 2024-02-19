@@ -16,7 +16,7 @@ const indexRouter = require('./routes');
 app.use('/', indexRouter);
 // const indexRouter = require('./routes/index')
 
-// 회원 관리 라우터
+// /user
 const userRouter = require('./routes/user');
 app.use('/user', userRouter);
 
