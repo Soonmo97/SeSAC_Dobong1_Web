@@ -1,6 +1,6 @@
 const experss = require('express');
 const app = experss();
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config;
 const session = require('express-session');
 const PORT = 8080;
 
@@ -34,7 +34,7 @@ db.sequelize
   .sync({ force: false })
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`http://localhost:${8080}`);
+      console.log(`http://localhost:${process.env.PORT}`);
     });
   })
   .catch((err) => {

@@ -64,7 +64,7 @@ app.post('/login', (req, res) => {
       originalMaxAge: 600000,
       httpOnly: true
       },
-      ser: 'cocoa'
+      user: 'cocoa'
     }
     */
     console.log(req.sessionID);
