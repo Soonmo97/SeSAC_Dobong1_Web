@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include('include/head', { title: '로그인' })%>
+  <body>
+    <%- include('include/header') %>
+    <h1>로그인</h1>
+    <form name="form_info" action="/profile" method="POST">
+      <input type="hidden" name="userid" />
+    </form>
+
+    <form name="form_login">
+      <label for="userid">ID</label>
+      <input id="userid" type="text" name="userid" required /><br />
+      <label for="password">Password</label>
+      <input id="password" type="password" name="pw" required /><br />
+      <button type="button" onclick="login();">Login</button>
+    </form>
+
+    <a href="/register">Register</a>
+
+    <script>
+      // POST /login
+      async function login() {
+        const form = document.forms['form_login'];
+        const formInfo = document.forms['form_info'];
+
+        if (!form.checkValidity()) {
+          form.repotValidity();
+          return;
+        }
+
+        const response = await axios({
+          url: '/login',
+          method: 'POST',
+          data: {
+            userid: form.userid.value,
+            pw: form.pw.value,
+          },
+        });
+
+        if (response.data) {
+          // 로그인 성공
+          // 1. 로그인 성공 alert 띄우기
+          alert('로그인 성공');
+          // 2. hidden input에 userid 정보 전달하기
+          formInfo.userid.value = form.userid.value;
+          // 3. hidden input form 제출
+          formInfo.submit(); // POST 요청 보내는 중 /profile
+        } else {
+          alert('로그인 실패. 아이디나 비밀번호가 틀렸습니다.');
+          form.reset(); // input창 초기화
+        }
+      }
+    </script>
+  </body>
+</html>
