@@ -13,7 +13,7 @@ function hashPW(pw) {
 // 2. 로그인 >> 해시값 일치 확인
 function comparePW(inputPw, hashedPw) {
   // compareSync(원본비밀번호, 해시된 비밀번호)
-  return bcrypt.compareSync(inputPw, hashedPw); // 리넡값은 true or false
+  return bcrypt.compareSync(inputPw, hashedPw); // 리턴값은 true or false
 }
 
 module.exports = { hashPW, comparePW };

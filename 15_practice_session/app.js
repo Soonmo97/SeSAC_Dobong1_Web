@@ -33,6 +33,7 @@ app.get('/', (req, res) => {
   const user = req.session.user; // 'cocoa'
   // 로그인이 된 유저라면 user에 cocoa가 담겨져 있음,
   // 로그인이 안된 유저라면 user는 undefined
+  // console.log(req.sessionID);
   console.log('유저 정보', user);
   if (user) {
     // 세션에 user라는 키가 있다면, 로그인 된 상태
