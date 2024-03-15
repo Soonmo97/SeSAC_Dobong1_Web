@@ -1,0 +1,18 @@
+.div {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: yellow;
+}
+
+.hello {
+  width: 300px;
+  height: 250px;
+  margin: 0 10px;
+  text-align: center;
+  background-color: '#FAEBD7';
+}
+
+.hello > h1 {
+  color: #dead88;
+}
