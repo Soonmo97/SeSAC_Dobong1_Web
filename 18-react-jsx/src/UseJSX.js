@@ -31,6 +31,10 @@ export default function UserJSX() {
     alert('안녕, 내 이름은 진형이야.');
   }
 
+  // const myFunc = () => {
+  //   alert('안녕, 내 이름은 진형이야.');
+  // };
+
   function addNum(a, b) {
     alert(a + b);
   }

@@ -16,17 +16,17 @@ export default function PracticeRef2() {
       case '+':
         num1 + num2 === Number(inputRef.current.value)
           ? alert('정답입니다.')
-          : alert('오답입니다.');
+          : alert(`오답입니다. 정답은 ${num1 + num2} 입니다`);
         break;
       case '-':
         num1 - num2 === Number(inputRef.current.value)
           ? alert('정답입니다.')
-          : alert('오답입니다.');
+          : alert(`오답입니다. 정답은 ${num1 - num2} 입니다`);
         break;
       case '*':
         num1 * num2 === Number(inputRef.current.value)
           ? alert('정답입니다.')
-          : alert('오답입니다.');
+          : alert(`오답입니다. 정답은 ${num1 * num2} 입니다`);
         break;
     }
     inputRef.current.value = '';

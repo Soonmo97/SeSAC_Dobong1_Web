@@ -20,7 +20,7 @@ app.get('/login', (req, res) => {
 });
 
 // 로그인 요청
-// jwt 생성
+// jwt 생
 app.post('/login', (req, res) => {
   try {
     console.log(req.body);

@@ -6,6 +6,7 @@ import {
   HandlerEx2,
   HandlerEx4,
 } from './components/ex/HandlerEx';
+import EntirePractice from './practice/EntirePactice';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
       <br />
       <HadnlerEx3 />
       <HandlerEx4 />
+      <hr />
+      <h1 style={{ textAlign: 'center' }}>실습문제</h1>
+      <EntirePractice />
     </div>
   );
 }

@@ -8,7 +8,7 @@ function App() {
     <div>
       <h1>JSX 문법을 배워봐요!</h1>
       <UserJSX></UserJSX>
-      <PracticeJSX></PracticeJSX>
+      <PracticeJSX />
     </div>
   );
 }
