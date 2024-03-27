@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  height: 50px;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: aliceblue;
+  ul {
+    display: flex;
+    list-style: none;
+    li {
+      margin: 0 20px;
+      a {
+        text-decoration: none;
+        color: green;
+      }
+    }
+  }
+}
+
+.student {
+  background-color: yellowgreen;
+  height: 60px;
+  .name {
+    color: blue;
+  }
+  .realName {
+    color: red;
+  }
+}
