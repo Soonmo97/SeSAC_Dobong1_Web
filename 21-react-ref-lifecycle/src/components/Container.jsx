@@ -1,4 +1,5 @@
-import '../style/post.css';
+// import '../style/post.css';
+import '../style/Post.scss';
 
 export default function Container({ children }) {
   return (
