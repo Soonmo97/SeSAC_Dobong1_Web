@@ -1,0 +1,45 @@
+$color-salmon: salmon;
+$color-papayawhip: papayawhip;
+$box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+
+main {
+  display: flex;
+  justify-content: center;
+  .ListContainer {
+    .TodoList {
+      padding: 20px;
+      h2 {
+        text-align: center;
+      }
+      div button {
+        margin-left: 10px;
+      }
+      ul {
+        text-align: center;
+        color: black;
+
+        button {
+          background-color: skyblue;
+          border: none;
+          box-shadow: $box-shadow;
+          margin-left: 10px;
+        }
+      }
+      border: 2px dashed $color-papayawhip;
+      color: pink;
+      margin: 20px 0;
+    }
+    .DoneList {
+      h2 {
+        text-align: center;
+      }
+      ul {
+        text-align: center;
+        color: black;
+        text-decoration: line-through;
+      }
+      border: 2px dashed $color-salmon;
+      color: coral;
+    }
+  }
+}
