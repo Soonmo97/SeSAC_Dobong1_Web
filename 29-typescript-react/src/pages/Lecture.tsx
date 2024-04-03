@@ -14,10 +14,10 @@ export default function Lecture() {
       <Container>
         {/* <Props1 name="allie" />
         <Props2 width="100px" height="100px" color="pink" />
-        <Props3 width={100} height={100} text="hellp" color="yellow" />
-        <Text /> */}
+      <Props3 width={100} height={100} text="hellp" color="yellow" /> */}
+        <Text />
         {/* <EventObj /> */}
-        <Todolist />
+        {/* <Todolist /> */}
         {/* <GenericList /> */}
       </Container>
     </>

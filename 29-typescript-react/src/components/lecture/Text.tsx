@@ -13,6 +13,7 @@ export default function Text() {
   // state 변경함수
   const changeState = () => {
     // setText(ref.current?.value);
+    // ref (input)의 값이 undefined가 아닐 때
     if (typeof ref.current?.value === 'string') {
       setText(ref.current.value);
     }
