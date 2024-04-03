@@ -22,7 +22,7 @@ string, number 로만 이루어진 튜플을 선언했기 때문에
 // drink2.push(null);
 
 // readonly: 길이를 특정하고 싶을 때,
-let drink3: readonly [string, number] = ['cola', 2000];
+let drink3: [string, number] = ['cola', 2000];
 // drink3[0] = 'cider'; // 수정 불가
 // drink3.push('push 되나요?'); // 수정 불가
 
@@ -154,6 +154,7 @@ type Person = {
   like?: string[];
   gender: string;
 };
+
 type Gender = 'Female' | 'Male';
 
 type Person2 = {
