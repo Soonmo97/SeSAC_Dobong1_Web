@@ -14,7 +14,9 @@ const PostList = () => {
   useEffect(() => {
     const getPosts = async () => {
       const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+      console.log(res);
       const jsonData = await res.json();
+      console.log(jsonData);
 
       setPosts(jsonData.slice(0, 10));
     };

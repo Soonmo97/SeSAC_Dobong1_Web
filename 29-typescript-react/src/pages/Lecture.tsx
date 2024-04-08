@@ -15,10 +15,10 @@ export default function Lecture() {
         {/* <Props1 name="allie" />
         <Props2 width="100px" height="100px" color="pink" />
       <Props3 width={100} height={100} text="hellp" color="yellow" /> */}
-        <Text />
+        {/* <Text /> */}
         {/* <EventObj /> */}
         {/* <Todolist /> */}
-        {/* <GenericList /> */}
+        <GenericList />
       </Container>
     </>
   );

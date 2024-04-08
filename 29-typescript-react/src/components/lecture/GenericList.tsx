@@ -8,6 +8,9 @@ export default function GenericList() {
 
   const addNumberTodo = () => {
     setNumberTodos([...numberTodos, { id: Date.now(), text: 10, done: false }]);
+    // setNumberTodos((prevTodo) =>
+    //   prevTodo.concat([{ id: Date.now(), text: 10, done: false }])
+    // );
     console.log(numberTodos);
   };
   const addStringTodo = () => {
