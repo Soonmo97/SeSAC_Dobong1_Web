@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>채팅방입니다.</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <style>
+      #space {
+        background-color: skyblue;
+        width: 500px;
+        height: 500px;
+        overflow: scroll;
+      }
+
+      /* 상대 */
+      #space p span {
+        width: 100%;
+        background-color: white;
+        margin: 10px;
+      }
+
+      /* 나 */
+      #space .me {
+        text-align: end;
+      }
+
+      #space .me span {
+        width: 100%;
+        background-color: yellow;
+        margin: 10px;
+        position: relative;
+      }
+
+      #space .user {
+        width: 100%;
+        color: blue;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="chatRoom">
+      <!-- 채팅방 내용 -->
+      <div id="space"></div>
+    </div>
+
+    <form id="chat">
+      <select id="dmMember">
+        <option value="all">전체</option></select
+      ><span> 에게 </span>
+      <input type="text" placeholder="채팅 내용" id="message" />
+      <button>전송</button>
+    </form>
+    <script>
+      const socket = io();
+      const users = document.getElementById('users');
+      const space = document.getElementById('space');
+      const chatForm = document.getElementById('chat');
+      const select = chatForm.querySelector('#dmMember');
+
+      // dm멤버 목록 셋팅 (서버에서 받아오기)
+      socket.on('dmMember', (dmMember) => {
+        // dmMember는 소켓들이 담긴 객체
+        for (let member in dmMember) {
+          // 객체 순회하며 키값으로 접근
+          const option = createElement('option');
+          option.value = dmMember[member].id.slice(0, 4);
+          option.textContent = dmMember[member].id.slice(0, 4);
+          select.append(option);
+        }
+      });
+
+      // 서버에서 입장 메세지 전달받아서 화면에 띄워주기
+      socket.on('userjoin2', (notice) => {
+        // console.log(notice);
+        const p = document.createElement('p');
+        p.textContent = notice;
+        space.append(p);
+        p.classList.add('user');
+
+        // 실습 5 dm 선택 창에 입장한 멤버 추가
+        const option = document.createElement('option');
+        option.value = notice.slice(0, 4);
+        option.textContent = notice.slice(0, 4);
+        select.append(option);
+      });
+
+      // 서버에 메세지, 작성자 보내기
+      chatForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // submit 새로 고침 막기
+        const input = chatForm.querySelector('#message');
+        const message = input.value; // string
+
+        // 전체 전송
+        if (select.value === 'all') {
+          socket.emit('message2', message, socket.id);
+        } else {
+          // dm 전송
+        }
+
+        input.value = '';
+      });
+
+      // 서버에서 주는 메세지를 받아서 화면에 띄워주기
+      socket.on('message_toAll', (message, id) => {
+        const p = document.createElement('p');
+        space.append(p);
+        const span = document.createElement('span');
+        p.append(span);
+        span.textContent = `${id} : ${message}`;
+        // 내가 보낸 채팅
+        if (socket.id.slice(0, 4) === id) {
+          p.classList.add('me');
+        }
+      });
+    </script>
+  </body>
+</html>

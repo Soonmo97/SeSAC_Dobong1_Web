@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습1</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <button id="hello" onclick="hello()">hello</button>
+    <button id="study" onclick="study()">study</button>
+    <button id="bye" onclick="bye()">bye</button>
+    <p></p>
+    <h3></h3>
+  </body>
+  <script>
+    // 내가 풀은 거
+    // const socket = io();
+    // const hello = document.querySelector('#hello');
+    // const study = document.querySelector('#study');
+    // const bye = document.querySelector('#bye');
+    // const p = document.querySelector('p');
+    // const h3 = document.querySelector('h3');
+
+    // hello.addEventListener('click', () => {
+    //   socket.emit('practice', '안녕하세요', (res) => {
+    //     console.log(res);
+    //     p.innerText = 'hello: ' + res;
+    //   });
+    // });
+    // study.addEventListener('click', () => {
+    //   socket.emit('practice', '공부합시다', (res) => {
+    //     p.innerText = 'study: ' + res;
+    //   });
+    // });
+    // bye.addEventListener('click', () => {
+    //   socket.emit('practice', '잘가', (res) => {
+    //     p.innerText = 'bye: ' + res;
+    //   });
+    // });
+
+    // 리더님이 풀은 거
+    const socket = io();
+    const h3 = document.querySelector('h3');
+
+    function hello() {
+      socket.emit('hello', 'hello', (message) => {
+        h3.textContent = 'server: ' + message;
+      });
+    }
+
+    function study() {
+      socket.emit('study', 'study');
+      socket.on('study2', (message) => {
+        h3.textContent = 'server: ' + message;
+      });
+    }
+
+    function bye() {
+      socket.emit('bye', 'bye');
+      socket.on('bye2', (message) => {
+        h3.textContent = 'server: ' + message;
+      });
+    }
+  </script>
+</html>
