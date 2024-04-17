@@ -4,17 +4,21 @@ import io from 'socket.io-client';
 const socket = io.connect('http://localhost:8080', { autoConnect: false });
 
 export default function Practice1() {
+  const [fromServerStr, setFromServerStr] = useState('');
   const initSocketConnect = () => {
-    console.log(socket.connected);
+    // console.log(socket.connected);
     if (!socket.connected) socket.connect(); // 클라이언트 소켓에 접속
     // console.log('after connect', socket.connected)
   };
 
   useEffect(() => {
     initSocketConnect();
+    // socket.on('hello2', (msg) => {
+    //   setFromServerStr('hello: ' + msg);
+    // });
+    // 실시간 통신이기 때문에 useEffect(mount)안에 선언해도
+    // 새로고침 필요없이 사용가능
   }, []); // mount
-
-  const [fromServerStr, setFromServerStr] = useState('');
 
   const hello = () => {
     socket.emit('hello', '안녕하세요');

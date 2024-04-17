@@ -4,7 +4,7 @@ const http = require('http');
 const PORT = 8080;
 const app = express();
 const server = http.createServer(app);
-const socketHandler = require('./sockets');
+const socketHandler = require('./sockets/index2');
 socketHandler(server);
 
 // cors: 다른 서버에서 보내는 요청 제한
