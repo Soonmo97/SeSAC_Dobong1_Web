@@ -118,7 +118,6 @@ export default function Chatting3() {
         ...chatList,
         { type: type, content: content, isDm: isDm, name: data.id },
       ];
-
       setChatList(newChatList);
     },
     // 첫번째 비교할 때는 nickname이 제대로 설정되지 않아서
