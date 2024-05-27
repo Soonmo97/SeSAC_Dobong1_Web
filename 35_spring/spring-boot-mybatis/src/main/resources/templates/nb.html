@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- Axios CDN을 불러옵니다 -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h2>게시판</h2>
+    <input type="text" name="search"/> <button>검색</button>
+  <br/> <br/>
+  <form id="form_nb">
+    <input type="text" name="title" placeholder="제목"/>
+    <input type="text" name="content" placeholder="내용"/>
+    <input type="text" name="writer" placeholder="작성자"/>
+    <button type="button" onclick="insertNb()">작성</button>
+  </form>
+  <br/> <br/>
+  <table border="1">
+    <thead>
+    <tr>
+      <th>No.</th>
+      <th>ID</th>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>작성일</th>
+      <th>수정</th>
+      <th>삭제</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr th:each="nb:${nbs}">
+        <td th:text="${nb.getNo()}"></td>
+        <td th:text="${nb.getId()}"></td>
+        <td th:text="${nb.getTitle()}"></td>
+        <td th:text="${nb.getWriter()}"></td>
+        <td th:text="${nb.getRegistered()}"></td>
+        <td><button type="button" th:onclick="patchNb([[${nb.getId()}]])">수정</button></td>
+        <td><button type="button" th:onclick="deleteNb([[${nb.getId()}]])">삭제</button></td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+<script>
+  function insertNb() {
+    const form = document.getElementById("form_nb");
+    const data = {
+      title: form.title.value,
+      content: form.content.value,
+      writer: form.writer.value
+    }
+    axios.post("/nb", data).then((res) => {
+      if(res.data.result) {
+        window.location.reload();
+      } else {
+        alert("에러 발생");
+      }
+    })
+  }
+
+  function patchNb(id) {
+    const form = document.getElementById("form_nb");
+    const data = {
+      title: form.title.value,
+      content: form.content.value,
+      writer: form.writer.value
+    }
+
+    axios.patch(`/nb/${id}`, data).then((res) => {
+      if(res.data.result) {
+        window.location.reload();
+      } else {
+        alert("에러 발생");
+      }
+    })
+  }
+
+  function deleteNb(id) {
+    axios.delete(`/nb/${id}`).then((res) => {
+        if(res.data.result) {
+          window.location.reload();
+        } else {
+          alert("에러 발생");
+        }
+      })
+  }
+</script>
+</html>

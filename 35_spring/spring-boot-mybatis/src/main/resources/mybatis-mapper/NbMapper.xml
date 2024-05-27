@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lecture.spring_boot_mybatis.mapper.NbMapper">
+    <select id="retrieveAll" resultType="lecture.spring_boot_mybatis.domain.Nb">
+        SELECT nb.* FROM nb
+        <!-- SELECT * FROM nb -->
+    </select>
+
+    <insert id="insertNb" parameterType="map">
+        INSERT INTO nb (title, content, writer) VALUES (#{title}, #{content}, #{writer});
+    </insert>
+
+    <update id="updateNb" parameterType="map">
+        UPDATE nb SET title=#{title}, content=#{content}, writer=#{writer} WHERE id=#{id};
+    </update>
+
+    <delete id="deleteNb" parameterType="Integer">
+        DELETE FROM nb WHERE id=#{id}
+    </delete>
+</mapper>

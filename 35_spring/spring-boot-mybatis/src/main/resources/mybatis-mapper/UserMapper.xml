@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lecture.spring_boot_mybatis.mapper.UserMapper">
+    <!-- 조회(SELECT) -->
     <select id="retrieveAll" resultType="lecture.spring_boot_mybatis.domain.User">
         SELECT user.* FROM user
     </select>
+
+    <!-- 삽입(INSERT) -->
+<!--    <insert id="insertUser" parameterType="map">-->
+<!--        INSERT INTO user(name, nickname) VALUES (#{name}, #{nickname})-->
+<!--    </insert>-->
+
+    <!-- 수정(PATCH) -->
+    <update id="updateUser" parameterType="map">
+        UPDATE user SET name=#{name}, nickname=#{nickname} WHERE id=#{id}
+    </update>
+
+    <!-- 삭제(DELETE) -->
+    <delete id="deleteUser" parameterType="Integer">
+        DELETE FROM user WHERE id=#{id}
+    </delete>
 </mapper>
