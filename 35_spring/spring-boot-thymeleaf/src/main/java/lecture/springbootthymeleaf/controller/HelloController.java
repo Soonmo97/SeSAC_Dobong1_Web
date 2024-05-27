@@ -1,16 +1,19 @@
 package lecture.springbootthymeleaf.controller;
 
+import lecture.springbootthymeleaf.dto.NbDTO;
+import lecture.springbootthymeleaf.dto.UserDTO;
+import lecture.springbootthymeleaf.vo.UserVO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
+
+import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
 
 @Controller
 public class HelloController {
@@ -109,10 +112,12 @@ public class HelloController {
         for (int i = 0; i < 12; i++) {
             monthSet[i] = String.valueOf(i + 1);
         }
-        String[] daySet = new String[30];
-        for (int i = 0; i < 30; i++) {
+        String[] daySet = new String[31];
+        for (int i = 0; i < 31; i++) {
             daySet[i] = String.valueOf(i + 1);
         }
+        // int[] yearSet = IntStream.rangeClose(1950, 2024).toArray();
+
         model.addAttribute("yearSet", yearSet);
         model.addAttribute("monthSet", monthSet);
         model.addAttribute("daySet", daySet);
@@ -127,6 +132,7 @@ public class HelloController {
             @RequestParam String month,
             @RequestParam String day,
             @RequestParam String interest,
+//            @RequestParam String[] interests,
             Model model
     ) {
         model.addAttribute("name", name);
@@ -134,6 +140,37 @@ public class HelloController {
         String date = year + "-" + month + "-" + day;
         model.addAttribute("date", date);
         model.addAttribute("interest", interest);
+//        String intrest = String.join(", ", interests);
         return "pracResult";
+    }
+
+    @PostMapping("/apiPrac")
+    @ResponseBody
+    public String join(@RequestBody UserVO user) {
+        return user.getName() + "회원가입 성공";
+    }
+
+    @GetMapping("/nb")
+    @ResponseBody
+    public String get() {
+        return "글 조회";
+    }
+
+    @PostMapping("/nb")
+    @ResponseBody
+    public String create(@RequestBody NbDTO nb) {
+        return nb.getAuthor() + "님의 글이 등록되었습니다.";
+    }
+
+    @PatchMapping("/nb/{id}")
+    @ResponseBody
+    public String patch(@PathVariable int id, @RequestBody NbDTO nb) {
+        return id + "님의 글이 " + nb.getContent() + "로 수정되었습니다.";
+    }
+
+    @DeleteMapping("/nb/{id}")
+    @ResponseBody
+    public String delete(@PathVariable int id) {
+        return id + "님의 글 삭제";
     }
 }
