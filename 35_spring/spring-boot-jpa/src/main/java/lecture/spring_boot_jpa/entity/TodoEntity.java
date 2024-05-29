@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Table(name = "todo")
@@ -22,8 +23,8 @@ public class TodoEntity {
     private String title;
 
     @Column(nullable = false)
-    @Builder.Default
-    private boolean done = false;
+    @ColumnDefault("false")
+    private boolean done;
 
     @ManyToOne // 다 대 일 (자식)
     @JoinColumn(name = "userId", nullable = false) // 컬럼 지정
