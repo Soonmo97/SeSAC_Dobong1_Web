@@ -11,6 +11,8 @@ import java.util.List;
 public interface NbMapper {
     List<Nb> retrieveAll();
 
+    List<Nb> search(String q);
+
     void insertNb(NbCreateDTO nb);
 
     void updateNb(Nb nb);

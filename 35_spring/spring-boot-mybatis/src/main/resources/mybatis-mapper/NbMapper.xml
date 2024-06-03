@@ -6,6 +6,10 @@
         <!-- SELECT * FROM nb -->
     </select>
 
+    <select id="search" resultType="lecture.spring_boot_mybatis.domain.Nb" parameterType="String">
+        SELECT * FROM nb WHERE title LIKE CONCAT('%', #{q}, '%')
+    </select>
+
     <insert id="insertNb" parameterType="map">
         INSERT INTO nb (title, content, writer) VALUES (#{title}, #{content}, #{writer});
     </insert>

@@ -43,6 +43,24 @@ public class NbService {
         return nbs;
     }
 
+    public List<NbDTO> getNbSearchList(String q) {
+        List<Nb> result = nbMapper.search(q);
+        List<NbDTO> nbs = new ArrayList<>();
+
+        for(int i = 0; i < result.size(); i++) {
+            // Builder 패턴 이용한 version
+            NbDTO nb = NbDTO.builder()
+                    .no(result.get(i).getWriter() + (i+1))
+                    .id(result.get(i).getId())
+                    .title(result.get(i).getTitle())
+                    .writer(result.get(i).getWriter())
+                    .registered(result.get(i).getRegistered())
+                    .build();
+            nbs.add(nb); // nbs.add(nbDTO)
+        }
+        return nbs;
+    }
+
     public void insertNb(NbCreateDTO nb) {nbMapper.insertNb(nb);}
 
     public void updateNb(int id, NbCreateDTO nb) {

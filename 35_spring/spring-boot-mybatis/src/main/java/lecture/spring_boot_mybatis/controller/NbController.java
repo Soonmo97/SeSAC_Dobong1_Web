@@ -30,6 +30,16 @@ public class NbController {
         return "nb";
     }
 
+    @GetMapping("/search")
+    public String getSearchNb(
+            @RequestParam String q,
+            Model model
+    ) {
+        List<NbDTO> nbs = nbService.getNbSearchList(q);
+        model.addAttribute("nbs", nbs);
+        return "nb";
+    }
+
     @PostMapping("")
     @ResponseBody
     public DefaultResDTO insertNb(

@@ -11,7 +11,9 @@
 </head>
 <body>
   <h2>게시판</h2>
-    <input type="text" name="search"/> <button>검색</button>
+  <form action="/nb/search" method="get">
+    <input type="text" name="q" placeholder="제목"/> <button type="submit">검색</button>
+  </form>
   <br/> <br/>
   <form id="form_nb">
     <input type="text" name="title" placeholder="제목"/>
